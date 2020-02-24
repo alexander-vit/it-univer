@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('form').submit(function (e) {
+					e.preventDefault();
+					$.ajax({
+					  type: 'POST',
+					  url: "zad2-backend.php",
+					  data: $(this).serialize(),
+					  success: function(data) {
+						$('#result').html(data);
+					  }
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			<p>Введите префикс строки:</p>
+			<p><input type="text" name="prefix" id="prefix"></p>
+			<p>Введите текст:</p>
+			<p><textarea rows="10" cols="45" name="text" id="text"></textarea></p>
+			<p><input type="submit"></p>
+		</form>
+		<hr>
+		<strong>Строки начинающиеся с указанного префикса:</strong>
+		<div id="result"></div>
+	</body>
+</html>
